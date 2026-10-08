@@ -15,13 +15,14 @@ function processWeatherData(rawData) {
       pressure: rawData.currentConditions?.pressure,
       icon: rawData.currentConditions?.icon,
     },
-    days: rawData.days?.slice(0, 7).map((day) => ({
-    date: day.datetime,
-    tempMax: day.tempmax,
-    tempMin: day.tempmin,
-    conditions: day.conditions,
-    icon: day.icon,
-  })) || [],
+    days:
+      rawData.days?.slice(0, 7).map((day) => ({
+        date: day.datetime,
+        tempMax: day.tempmax,
+        tempMin: day.tempmin,
+        conditions: day.conditions,
+        icon: day.icon,
+      })) || [],
   };
 }
 
@@ -36,9 +37,9 @@ const btn = document.querySelector('button');
 let request = 'Saint-petersburg';
 
 btn.addEventListener('click', (event) => {
-  event.preventDefault(); 
+  event.preventDefault();
   if (inputLocation.value.trim()) {
-    request = inputLocation.value.trim(); 
+    request = inputLocation.value.trim();
     inputLocation.value = '';
     searchWeatherData(request, unitGroup);
   }
