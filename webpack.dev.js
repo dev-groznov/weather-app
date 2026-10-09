@@ -5,7 +5,7 @@ module.exports = merge(common, {
   mode: 'development',
   devtool: 'eval-source-map',
   devServer: {
-    static: ['./public', './dist'], 
+    static: ['./public', './dist'],
     port: 8080,
     open: true,
     hot: true,
@@ -18,11 +18,11 @@ module.exports = merge(common, {
       },
       {
         test: /\.html$/i,
-        use: ["html-loader"],
+        use: ['html-loader'],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: "asset/resource",
+        type: 'asset/resource',
       },
     ],
   },

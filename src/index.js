@@ -1,3 +1,4 @@
+import './style.css';
 import { ui } from './scripts/ui.js';
 import { api } from './scripts/api.js';
 
@@ -6,6 +7,7 @@ function processWeatherData(rawData) {
     city: rawData.resolvedAddress,
     current: {
       temp: rawData.currentConditions?.temp,
+      feelslike: rawData.currentConditions?.feelslike,
       conditions: rawData.currentConditions?.conditions,
       humidity: rawData.currentConditions?.humidity,
       windspeed: rawData.currentConditions?.windspeed,
@@ -32,8 +34,9 @@ function searchWeatherData(location = 'Saint-petersburg', unitGroup = 'uk') {
 }
 
 const inputLocation = document.querySelector('.location-search');
-const btn = document.querySelector('button');
+const btn = document.querySelector('.search-form button');
 let request = 'Saint-petersburg';
+let unitGroup = 'uk';
 
 btn.addEventListener('click', (event) => {
   event.preventDefault();
@@ -44,12 +47,16 @@ btn.addEventListener('click', (event) => {
   }
 });
 
-const inputUnitGroup = document.querySelector('.unitGroupRadioInput');
-let unitGroup = 'uk';
+// Toggle °C / °F
+const unitButtons = document.querySelectorAll('.unit-btn');
 
-inputUnitGroup.addEventListener('click', () => {
-  unitGroup = unitGroup === 'us' ? 'uk' : 'us';
-  searchWeatherData(request, unitGroup);
+unitButtons.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    unitButtons.forEach((b) => b.classList.remove('active'));
+    btn.classList.add('active');
+    unitGroup = btn.dataset.unit;
+    searchWeatherData(request, unitGroup);
+  });
 });
 
 searchWeatherData();
