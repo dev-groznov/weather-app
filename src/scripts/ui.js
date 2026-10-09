@@ -77,15 +77,15 @@ export const ui = {
 
   setBackground(icon) {
     const backgrounds = {
-      'clear-day': '/images/clear-day.jpeg',
-      'clear-night': '/images/clear-night.jpeg',
-      rain: '/images/rain.jpeg',
-      snow: '/images/snow.jpeg',
-      cloudy: '/images/cloudy.jpeg',
-      'partly-cloudy-day': '/images/partly-cloudy-day.jpeg',
+      'clear-day': './images/clear-day.jpeg',
+      'clear-night': './images/clear-night.jpeg',
+      rain: './images/rain.jpeg',
+      snow: './images/snow.jpeg',
+      cloudy: './images/cloudy.jpeg',
+      'partly-cloudy-day': './images/partly-cloudy-day.jpeg',
     };
 
-    const image = backgrounds[icon] || '/images/cloudy.jpeg';
+    const image = backgrounds[icon] || './images/cloudy.jpeg';
     document.body.style.backgroundImage = `url('${image}')`;
   },
 
