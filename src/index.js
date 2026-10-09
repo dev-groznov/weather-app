@@ -1,4 +1,3 @@
-import './style.css';
 import { ui } from './scripts/ui.js';
 import { api } from './scripts/api.js';
 
