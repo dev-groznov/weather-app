@@ -275,3 +275,20 @@ body {
   opacity: 0.75;
   margin-left: 0.35rem;
 }
+
+/* error*/
+.error-message {
+  padding: 0.85rem 1.1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 12px;
+  background: rgba(180, 40, 40, 0.75);
+  border: 1px solid rgba(255, 100, 100, 0.35);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.error-message[hidden] {
+  display: none;
+}

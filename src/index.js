@@ -30,7 +30,11 @@ function processWeatherData(rawData) {
 function searchWeatherData(location = 'Saint-petersburg', unitGroup = 'uk') {
   api
     .getWeatherData(location, unitGroup)
-    .then((responce) => ui.renderWeatherData(processWeatherData(responce)));
+    .then((responce) => ui.renderWeatherData(processWeatherData(responce)))
+    .catch((error) => {
+      console.error(error);
+      ui.showError(error.message || 'Could not load weather.');
+    });
 }
 
 const inputLocation = document.querySelector('.location-search');

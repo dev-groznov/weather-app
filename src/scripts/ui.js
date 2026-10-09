@@ -1,5 +1,6 @@
 export const ui = {
   renderWeatherData(weatherData) {
+    this.hideError();
     this.setBackground(weatherData.current.icon);
 
     const isUs =
@@ -85,5 +86,22 @@ export const ui = {
 
     const image = backgrounds[icon] || '/images/cloudy.jpeg';
     document.body.style.backgroundImage = `url('${image}')`;
+  },
+
+  showError(message) {
+    let el = document.getElementById('error-message');
+    if (!el) {
+      el = document.createElement('div');
+      el.id = 'error-message';
+      el.className = 'error-message';
+      document.querySelector('.app')?.prepend(el);
+    }
+    el.textContent = message;
+    el.hidden = false;
+  },
+
+  hideError() {
+    const el = document.getElementById('error-message');
+    if (el) el.hidden = true;
   },
 };
