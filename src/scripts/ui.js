@@ -1,5 +1,6 @@
 export const ui = {
   renderWeatherData(weatherData) {
+    this.hideLoading();
     this.hideError();
     this.setBackground(weatherData.current.icon);
 
@@ -102,6 +103,16 @@ export const ui = {
 
   hideError() {
     const el = document.getElementById('error-message');
+    if (el) el.hidden = true;
+  },
+
+  showLoading() {
+    const el = document.getElementById('loader');
+    if (el) el.hidden = false;
+  },
+
+  hideLoading() {
+    const el = document.getElementById('loader');
     if (el) el.hidden = true;
   },
 };
